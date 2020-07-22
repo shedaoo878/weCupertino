@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-//Helloe
+
 void main() {
   runApp(MyApp());
 }
@@ -9,9 +9,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+      return MaterialApp(
+        title: 'Cupertino Pride',
+        theme: ThemeData(
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Cupertino Pride'),
     );
   }
 }
