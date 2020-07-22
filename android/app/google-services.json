@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "653805139019",
+    "firebase_url": "https://cupertino-pride.firebaseio.com",
+    "project_id": "cupertino-pride",
+    "storage_bucket": "cupertino-pride.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653805139019:android:3dc061c622fdd20eed49ce",
+        "android_client_info": {
+          "package_name": "com.example.cupertino_pride"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653805139019-gn55c7pic7ipi8jmqo45np1cbqufbqum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cupertino_pride",
+            "certificate_hash": "a86d04d290c1be43fb04330a4313b536c47bda91"
+          }
+        },
+        {
+          "client_id": "653805139019-o04hnhjps7vp55vm36bbgqbguj2vjq0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcUdb-F2yE9K4yBKloGfi3sxqvHO6_Veg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653805139019-o04hnhjps7vp55vm36bbgqbguj2vjq0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

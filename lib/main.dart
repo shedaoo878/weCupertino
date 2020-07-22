@@ -1,8 +1,10 @@
 
+import 'package:cupertino_pride/GoogleSignIn.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(GoogleSignInw());
 }
 //.
 class MyApp extends StatelessWidget {

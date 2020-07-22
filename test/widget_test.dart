@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:cupertino_pride/main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
