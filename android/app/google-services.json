@@ -5,6 +5,7 @@
     "project_id": "cupertino-pride",
     "storage_bucket": "cupertino-pride.appspot.com"
   },
+
   "client": [
     {
       "client_info": {
