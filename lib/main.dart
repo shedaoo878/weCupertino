@@ -1,10 +1,11 @@
 
 import 'package:cupertino_pride/GoogleSignIn.dart';
+import 'package:cupertino_pride/SafeRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
-  runApp(GoogleSignInw());
+  runApp(SafeRoutes());
 }
 //.
 class MyApp extends StatelessWidget {
