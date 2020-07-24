@@ -33,7 +33,7 @@ class homescreen extends State<StatefulWidget> {
                   constraints: BoxConstraints.expand(height: 225),
                   decoration: BoxDecoration(
                       gradient: new LinearGradient(
-                          colors: [Colors.blue, Colors.green],
+                          colors: [Colors.blueGrey, Colors.blueGrey],
                           begin: const FractionalOffset(1.0, 1.0),
                           end: const FractionalOffset(0.2, 0.2),
                           stops: [0.0, 1.0],
@@ -61,7 +61,7 @@ class homescreen extends State<StatefulWidget> {
                 ),
                 Container(
                   height: 500,
-                  margin: EdgeInsets.only(top: 300),
+                  margin: EdgeInsets.only(top: 200),
                   padding: EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,6 +70,7 @@ class homescreen extends State<StatefulWidget> {
                         margin: EdgeInsets.only(top: 40),
                         child: Text(
                           "Explore Your Community",
+
                         ),
                       ),
                       Container(
