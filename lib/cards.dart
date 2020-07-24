@@ -1,4 +1,7 @@
 import 'package:cupertino_pride/SafeRoutes.dart';
+import 'package:cupertino_pride/events.dart';
+import 'package:cupertino_pride/polls.dart';
+import 'package:cupertino_pride/vote.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -14,6 +17,9 @@ class cards extends StatelessWidget {
   }
 }
 
+Color lightBlueIsh = Color(0xFF07489C);
+Color lightGreen = Color(0xFF33BBB5);
+
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new homescreen();
@@ -23,7 +29,9 @@ class homescreen extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      backgroundColor: Color(0xFF083663) ,
+      body:
+      Container(
         child: Column(
           children: <Widget>[
             Stack(
@@ -33,8 +41,8 @@ class homescreen extends State<StatefulWidget> {
                   constraints: BoxConstraints.expand(height: 225),
                   decoration: BoxDecoration(
                       gradient: new LinearGradient(
-                          colors: [Colors.blueGrey, Colors.blueGrey],
                           begin: const FractionalOffset(1.0, 1.0),
+                          colors: [lightGreen, lightBlueIsh],
                           end: const FractionalOffset(0.2, 0.2),
                           stops: [0.0, 1.0],
                           tileMode: TileMode.clamp
@@ -46,17 +54,16 @@ class homescreen extends State<StatefulWidget> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Welcome to your Cupertino!')
+                        Text('Welcome to your Cupertino!',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                                fontSize: 30,
+                                color: Colors.white),
+
+                        )
                       ],
                     ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 120),
-                  constraints: BoxConstraints.expand(height:200),
-                  child: ListView(
-                    padding: EdgeInsets.only(left: 40),
-                    scrollDirection: Axis.horizontal,
                   ),
                 ),
                 Container(
@@ -68,9 +75,17 @@ class homescreen extends State<StatefulWidget> {
                     children: <Widget>[
                       Container(
                         margin: EdgeInsets.only(top: 40),
-                        child: Text(
-                          "Explore Your Community",
+                        child: Center(
+                          child: Text(
+                            "Explore Your Community",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              height: 1,
+                              color: Colors.white,
+                              fontSize: 20
+                            ),
 
+                          ),
                         ),
                       ),
                       Container(
@@ -89,14 +104,14 @@ class homescreen extends State<StatefulWidget> {
       ),
     );
   }
-  List<String> jobCategories = ["Safe Routes", "Events", "Voting", "Polls", "News"];
+  List<String> Categories = ["Safe Routes", "Events", "Voting", "Polls", "News"];
 
-  Map jobCatToIcon = {
-    "Safe Routes" : Icon(Icons.directions_bike, color: Colors.blue, size: 50,),
-    "Events" : Icon(Icons.calendar_today, color: Colors.blue, size: 50),
-    "Voting" : Icon(Icons.account_balance, color: Colors.blue, size: 50),
-    "Polls" : Icon(Icons.poll, color: Colors.blue, size: 50),
-    "News" : Icon(Icons.schedule, color: Colors.blue, size: 50),
+  Map jobIcon = {
+    "Safe Routes" : Icon(Icons.directions_bike, color: Color(0xFF083663), size: 50,),
+    "Events" : Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
+    "Voting" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
+    "Polls" : Icon(Icons.poll, color: Color(0xFF083663), size: 50),
+    "News" : Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
   };
 
   Widget getCategoryContainer(String categoryName) {
@@ -124,9 +139,12 @@ class homescreen extends State<StatefulWidget> {
             width: 70,
             child: FloatingActionButton(
               backgroundColor: Colors.white,
-              child:  jobCatToIcon[categoryName],
+              child:  jobIcon[categoryName],
               elevation: 10,
               onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => polls()));
+
 
               },
             ),
@@ -140,7 +158,7 @@ class homescreen extends State<StatefulWidget> {
     List<Widget> jobCategoriesCards = [];
     List<Widget> rows = [];
     int i = 0;
-    for (String category in jobCategories) {
+    for (String category in Categories) {
       if (i < 2) {
         rows.add(getCategoryContainer(category));
         i ++;
