@@ -39,7 +39,7 @@ class homescreen extends State<StatefulWidget> {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(40),
-                  constraints: BoxConstraints.expand(height: 225),
+                  constraints: BoxConstraints.expand(height: 175),
                   decoration: BoxDecoration(
                       gradient: new LinearGradient(
                           begin: const FractionalOffset(1.0, 1.0),
@@ -51,11 +51,11 @@ class homescreen extends State<StatefulWidget> {
                       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0), bottomRight:  Radius.circular(0))
                   ),
                   child: Container(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Welcome to your Cupertino!',
+                        Text('Welcome!',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 height: 1,
@@ -105,12 +105,12 @@ class homescreen extends State<StatefulWidget> {
       ),
     );
   }
-  List<String> Categories = ["Safe Routes", "Events", "Voting", "Polls", "News", "Resources"];
+  List<String> Categories = ["Safe Routes", "Events", "Voting Info", "Polls", "News", "Resources"];
 
   Map jobIcon = {
     "Safe Routes" : Icon(Icons.directions_bike, color: Color(0xFF083663), size: 50,),
     "Events" : Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
-    "Voting" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
+    "Voting Info" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
     "Polls" : Icon(Icons.poll, color: Color(0xFF083663), size: 50),
     "News" : Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
     "Resources" : Icon(Icons.info, color: Color(0xFF083663), size: 50),
@@ -139,7 +139,8 @@ class homescreen extends State<StatefulWidget> {
             padding: EdgeInsets.only(top: 30),
             height: 100,
             width: 70,
-            child: FloatingActionButton(
+            child: new FloatingActionButton(
+              heroTag: categoryName,
               backgroundColor: Colors.white,
               child:  jobIcon[categoryName],
               elevation: 10,

@@ -52,7 +52,10 @@ class homescreen extends State<StatefulWidget> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            FlutterLogo(size: 48),
+                            Icon(
+                              Icons.event,
+                              size: 50,
+                            ),
                             SizedBox(
                               width: 16,
                             ),
