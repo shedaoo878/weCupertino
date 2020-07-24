@@ -17,6 +17,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
+
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
@@ -31,6 +32,11 @@ dependencies:
   firebase_auth: ^0.16.0
   google_sign_in: ^4.4.4
   google_maps_flutter: ^0.5.27+3
+  google_map_polyline:
+  permission: ^0.1.7
+  url_launcher: ^5.0.2
+  path_provider: ^0.4.1
+  open_file: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +59,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/
+    - assets/ballot.pdf
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

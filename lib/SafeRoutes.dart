@@ -1,37 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:google_map_polyline/google_map_polyline.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:permission/permission.dart';
 
+void main() => runApp(SafeRoutes());
 
-class SafeRoutes extends StatefulWidget {
+class SafeRoutes extends StatelessWidget {
+  // This widget is the root of your application.
   @override
-  _safeRouteState createState() => _safeRouteState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
+  }
 }
 
-class _safeRouteState extends State<SafeRoutes> {
-  GoogleMapController mapController;
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+class _MyHomePageState extends State<MyHomePage> {
+  final Set<Polyline> polyline = {};
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  GoogleMapController _controller;
+  List<LatLng> routeCoords;
+  GoogleMapPolyline googleMapPolyline =
+  new GoogleMapPolyline(apiKey: "yourkeyhere");
+
+  getsomePoints() async {
+    var permissions =
+    await Permission.getPermissionsStatus([PermissionName.Location]);
+    if (permissions[0].permissionStatus == PermissionStatus.notAgain) {
+      var askpermissions =
+      await Permission.requestPermissions([PermissionName.Location]);
+    } else {
+      routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
+          origin: LatLng(40.6782, -73.9442),
+          destination: LatLng(40.6944, -73.9212),
+          mode: RouteMode.driving);
+    }
+  }
+
+  getaddressPoints() async {
+    routeCoords = await googleMapPolyline.getPolylineCoordinatesWithAddress(
+        origin: '55 Kingston Ave, Brooklyn, NY 11213, USA',
+        destination: '178 Broadway, Brooklyn, NY 11211, USA',
+        mode: RouteMode.driving);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getaddressPoints();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Maps Sample App'),
-          backgroundColor: Colors.green[700],
-        ),
+    return Scaffold(
         body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          ),
-        ),
-      ),
-    );
+          onMapCreated: onMapCreated,
+          polylines: polyline,
+          initialCameraPosition:
+          CameraPosition(target: LatLng(40.6782, -73.9442), zoom: 14.0),
+          mapType: MapType.normal,
+        ));
+  }
+
+  void onMapCreated(GoogleMapController controller) {
+    setState(() {
+      _controller = controller;
+
+      polyline.add(Polyline(
+          polylineId: PolylineId('route1'),
+          visible: true,
+          points: routeCoords,
+          width: 4,
+          color: Colors.blue,
+          startCap: Cap.roundCap,
+          endCap: Cap.buttCap));
+    });
   }
 }
