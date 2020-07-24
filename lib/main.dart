@@ -1,12 +1,14 @@
 
 import 'package:cupertino_pride/GoogleSignIn.dart';
 import 'package:cupertino_pride/SafeRoutes.dart';
+import 'package:cupertino_pride/cards.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
-  runApp(SafeRoutes());
+  runApp(cards());
 }
+
 //.
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
