@@ -1,7 +1,7 @@
 import 'package:cupertino_pride/SafeRoutes.dart';
 import 'package:flutter/material.dart';
 
-class events extends StatelessWidget {
+class vote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

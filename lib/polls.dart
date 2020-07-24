@@ -1,7 +1,8 @@
 import 'package:cupertino_pride/SafeRoutes.dart';
 import 'package:flutter/material.dart';
 
-class events extends StatelessWidget {
+// ignore: camel_case_types
+class polls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
