@@ -2,6 +2,8 @@
 //import 'package:cupertino_pride/events.dart';
 //import 'package:cupertino_pride/polls.dart';
 //import 'package:cupertino_pride/vote.dart';
+import 'package:cupertino_pride/SafeRoutes.dart';
+import 'package:cupertino_pride/Voting.dart';
 import 'package:cupertino_pride/events.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,12 @@ class cards extends StatelessWidget {
     return MaterialApp(
       title: "Home Page",
       home: HomeScreen(),
+      routes: <String, WidgetBuilder>{
+        "Events": (BuildContext context) => new Events(),
+        "Voting": (BuildContext context) => new Voting(),
+        "Safety": (BuildContext context) => new Safety(),
+
+      },
     );
     // TODO: implement build
     throw UnimplementedError();
@@ -105,12 +113,12 @@ class homescreen extends State<StatefulWidget> {
       ),
     );
   }
-  List<String> Categories = ["Safe Routes", "Events", "Voting Info", "Polls", "News", "Resources"];
+  List<String> Categories = ["Safety", "Events", "Voting", "Polls", "News", "Resources"];
 
   Map jobIcon = {
-    "Safe Routes" : Icon(Icons.directions_bike, color: Color(0xFF083663), size: 50,),
+    "Safety" : Icon(Icons.directions_bike, color: Color(0xFF083663), size: 50,),
     "Events" : Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
-    "Voting Info" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
+    "Voting" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
     "Polls" : Icon(Icons.poll, color: Color(0xFF083663), size: 50),
     "News" : Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
     "Resources" : Icon(Icons.info, color: Color(0xFF083663), size: 50),
@@ -145,8 +153,9 @@ class homescreen extends State<StatefulWidget> {
               child:  jobIcon[categoryName],
               elevation: 10,
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => events()));
+                
+                Navigator.of(context).pushNamed(categoryName);
+
 
 
               },

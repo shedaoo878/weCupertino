@@ -54,82 +54,91 @@ class googleSignInPage extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Cupertino Pride'),
-        ),
         body: Container(
+            color: Color(0xFF083663),
+//            decoration: BoxDecoration(
+//                gradient: new LinearGradient(
+//                    begin: const FractionalOffset(1.0, 1.0),
+//                    colors: [Colors.lightGreen, Colors.lightBlue],
+//                    end: const FractionalOffset(0.2, 0.2),
+//                    stops: [0.0, 1.0],
+//                    tileMode: TileMode.clamp),
+//                borderRadius: BorderRadius.only(
+//                    bottomLeft: Radius.circular(0),
+//                    bottomRight: Radius.circular(0))),
             child: Column(children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(40),
-            constraints: BoxConstraints.expand(height: 160),
-            decoration: BoxDecoration(
-                gradient: new LinearGradient(
-                    begin: const FractionalOffset(1.0, 1.0),
-                    colors: [Colors.lightGreen, Colors.lightBlue],
-                    end: const FractionalOffset(0.2, 0.2),
-                    stops: [0.0, 1.0],
-                    tileMode: TileMode.clamp),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(0))),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Welcome to Cupertino!',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        height: 1,
-                        fontSize: 30,
-                        color: Colors.white),
-                  )
-                ],
+              Container(
+                padding: EdgeInsets.all(40),
+                constraints: BoxConstraints.expand(height: 130),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                          child: Center(
+                              child: Text(
+                        'Welcome to Cupertino!',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            height: 1,
+                            fontSize: 28,
+                            color: Colors.white),
+                      )))
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          Container(
-
-            child: Wrap(
-
-            ),
-          ),
-          RaisedButton.icon(
-              onPressed: () {
-                signInWithGoogle().whenComplete(() => Navigator.push(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                      return cards();
-                    })));
-              },
-              icon: Icon(Icons.search),
-              label: Text("Sign In homie"))
-        ])
-
-//        child: Center(
-//          child: Column(
-//            mainAxisSize: MainAxisSize.max,
-//            mainAxisAlignment: MainAxisAlignment.center,
-//            children: <Widget>[
-//              FlutterLogo(),
-//              RaisedButton.icon(
-//                  onPressed: () {
-////                    signInWithGoogle().whenComplete(() =>
-//
-////                  Navigator.pop(context)
-//                    Navigator.push(
-//                        context,
-//                        MaterialPageRoute(builder: (BuildContext context) {
-//                          return cards();
-//                        }));
-//                  },
-//
-//                  icon: Icon(Icons.search),
-//                  label: Text("Sign In homie"))
-//            ],
-//          ),
-//        ),
-//      ),
-            ));
+//          Padding(padding: EdgeInsets.all(10)),
+              OutlineButton(
+                splashColor: Colors.white,
+                onPressed: () {
+                  signInWithGoogle().whenComplete(() => Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return cards();
+                      })));
+                },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
+                highlightElevation: 0,
+                borderSide: BorderSide(color: Colors.white),
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image(
+                          image: AssetImage("assets/google_logo.png"),
+                          height: 35.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Sign in with Google',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                  padding: EdgeInsets.all(10),
+                  child: Center(
+                    child: Wrap(
+                      children: <Widget>[
+                        Text(
+                          'This is an app description, It will contain all the information about the app that is '
+                          'neccessary I am typing all of this extra info to make sure that the text wraps properly'
+                          'I do not know how much more I need',
+                        )
+                      ],
+                    ),
+                  )),
+            ])));
   }
 }

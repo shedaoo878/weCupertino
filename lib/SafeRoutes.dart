@@ -3,9 +3,8 @@ import 'package:google_map_polyline/google_map_polyline.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission/permission.dart';
 
-void main() => runApp(SafeRoutes());
 
-class SafeRoutes extends StatelessWidget {
+class Safety extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
