@@ -1,5 +1,5 @@
-import 'package:cupertino_pride/SafeRoutes.dart';
 import 'package:flutter/material.dart';
+
 
 class events extends StatelessWidget {
   @override
@@ -9,43 +9,95 @@ class events extends StatelessWidget {
       home: HomeScreen(),
     );
     // TODO: implement build
-    throw UnimplementedError();
+
   }
 }
+
+Color lightBlueIsh = Color(0xFF07489C);
+Color lightGreen = Color(0xFF33BBB5);
 
 class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new homescreen();
 }
 
+
+// ignore: camel_case_types
 class homescreen extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      appBar: AppBar(
-          backgroundColor: Colors.blueGrey[900],
-          title: Center(child: Text("Events"))),
-      body: Container(
-        child: new Center(
-          child: new Row(
-            children: <Widget>[
-              new Padding(padding: new EdgeInsets.all(10.0)),
-              new RaisedButton.icon(
-                onPressed: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SafeRoutes()))
-                },
-                label: Text(
-                  'Event',
+      backgroundColor: Color(0xFF083663),
+      body: SafeArea(
+        child: ListView.builder(
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.all(16),
+                child: Stack(
+                  children: <Widget>[
+                    Card(
+                      elevation: 12,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      color: Colors.white,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24.0, vertical: 36),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24),
+                          color: Colors.teal,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            FlutterLogo(size: 48),
+                            SizedBox(
+                              width: 16,
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text(
+                                    'Event at Wilson Park',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5
+                                        .copyWith(color: Colors.white),
+                                  ),
+                                  Text('7/4 at 3:00PM',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline6
+                                          .copyWith(color: Colors.white)),
+                                ],
+                              ),
+                            ),
+                            Icon(
+                              Icons.navigate_next,
+                              size: 36,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 8,
+                      top: 12,
+                      child: Icon(
+                        Icons.add_location,
+                        size: 32,
+                        color: Colors.deepOrangeAccent,
+                      ),
+                    ),
+                  ],
                 ),
-                icon: Icon(Icons.event),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0))),
-              ),
-            ],
-          ),
-        ),
+              );
+            }),
       ),
     );
   }

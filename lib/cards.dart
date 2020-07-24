@@ -1,7 +1,8 @@
-import 'package:cupertino_pride/SafeRoutes.dart';
+//import 'package:cupertino_pride/SafeRoutes.dart';
+//import 'package:cupertino_pride/events.dart';
+//import 'package:cupertino_pride/polls.dart';
+//import 'package:cupertino_pride/vote.dart';
 import 'package:cupertino_pride/events.dart';
-import 'package:cupertino_pride/polls.dart';
-import 'package:cupertino_pride/vote.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -47,7 +48,7 @@ class homescreen extends State<StatefulWidget> {
                           stops: [0.0, 1.0],
                           tileMode: TileMode.clamp
                       ),
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight:  Radius.circular(30))
+                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0), bottomRight:  Radius.circular(0))
                   ),
                   child: Container(
                     padding: EdgeInsets.only(top: 50),
@@ -104,7 +105,7 @@ class homescreen extends State<StatefulWidget> {
       ),
     );
   }
-  List<String> Categories = ["Safe Routes", "Events", "Voting", "Polls", "News"];
+  List<String> Categories = ["Safe Routes", "Events", "Voting", "Polls", "News", "Resources"];
 
   Map jobIcon = {
     "Safe Routes" : Icon(Icons.directions_bike, color: Color(0xFF083663), size: 50,),
@@ -112,6 +113,7 @@ class homescreen extends State<StatefulWidget> {
     "Voting" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
     "Polls" : Icon(Icons.poll, color: Color(0xFF083663), size: 50),
     "News" : Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
+    "Resources" : Icon(Icons.info, color: Color(0xFF083663), size: 50),
   };
 
   Widget getCategoryContainer(String categoryName) {
@@ -143,7 +145,7 @@ class homescreen extends State<StatefulWidget> {
               elevation: 10,
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => polls()));
+                    MaterialPageRoute(builder: (context) => events()));
 
 
               },
