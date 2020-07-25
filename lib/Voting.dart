@@ -69,49 +69,89 @@ class votingState extends State<votingScreen> {
 
               Padding(padding: EdgeInsets.all(10)),
 
+              new Container(
+                padding: EdgeInsets.all(5),
+                child: new Table(
+                  border: TableBorder.all(),
+
+                  children: [
+
+                    TableRow(
+                      decoration: BoxDecoration(
+
+                      ),
+                        children: [
+
+                          Text('Party', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, ),
+                          Text('Republican', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Democrat', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Peace and Freedom', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Libertarian', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Green', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                        ]
+                    ),
+                    TableRow(
+                        children: [
+                          Text('President', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, ),
+                          Text('Donald J Trump', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Joe Biden', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Gloria La Riva', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Jo Jorgensen', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Howie Hawkins', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,)
+                        ]
+                    ),
+                    TableRow(
+                        children: [
+                          Text('VP', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, ),
+                          Text('Mike R Pence', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('--'),
+                          Text('VP Candidate', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Other Candidate', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Hawkins Howie', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,)
+                        ]
+                    ),
+
+                  ],
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(10),),
+
               new Table(
                 border: TableBorder.all(),
                 children: [
                   TableRow(
                       children: [
-
-                        Text('Party'),
-                        Text('Republican'),
-                        Text('Democrat'),
-                        Text('Peace and Freedom'),
-                        Text('Libertarian'),
-                        Text('Green'),
+                        Center(child:Text('Senator',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, )),
+                        Text('Kamala Harris(D)', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                        Text('Loretta L Sanchez(D)', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                       ]
                   ),
                   TableRow(
                       children: [
-                        Text('President'),
-                        Text('Donald J Trump'),
-                        Text('Joe Biden'),
-                        Text('Gloria La Riva'),
-                        Text('Jo Jorgensen'),
-                        Text('Howie Hawkins')
+                        Center(child:Text('Representative',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, )),
+                        Text('Mike Honda(D)', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                        Text('Ro Khanna(D)', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                       ]
                   ),
                   TableRow(
                       children: [
-                        Text('Vice President'),
-                        Text('Mike R Pence'),
-                        Text('--'),
-                        Text('VP Candidate'),
-                        Text('Other Candidate'),
-                        Text('Hawkins Howie')
+                        Center(child:Text('State Senator',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, )),
+                        Text('Nora Campos(D)', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                        Text('Jim Beall(D)', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                       ]
                   ),
                   TableRow(
                       children: [
-                        Text('Senator'),
-                        Text('Kamala Harris'),
-                        Text('Alexandria Ocasia Cortez')
+                        Center(child:Text('FUHSD Board members',  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, )),
+                        Text('Roy Rocklin', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                        Text('Jenny Yuan', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                       ]
                   )
+
                 ],
               ),
+
+              Padding(padding: EdgeInsets.all(10)),
               new Text(
                 "Which Propositions are you voting for?",
                 style: TextStyle(
@@ -120,7 +160,7 @@ class votingState extends State<votingScreen> {
                   fontWeight: FontWeight.bold,),
                 textAlign: TextAlign.center,
               ),
-
+              Padding(padding: EdgeInsets.all(10)),
               new CupertinoButton(
                 color: Colors.green,
                 child: Text("Link to Propositions information"),
@@ -129,6 +169,7 @@ class votingState extends State<votingScreen> {
                   launching()
                 },
               ),
+              Padding(padding: EdgeInsets.all(10)),
               new CupertinoButton(
                 color: Colors.green,
                 child: Text("Link to Candidate Information"),
@@ -228,13 +269,13 @@ class votingState extends State<votingScreen> {
       throw 'Could not launch $url';
     }
 
-    _
+
   }
 
 
   launching() async {
     const url =
-        'google.com';
+        'https://ballotpedia.org/California_2020_ballot_propositions';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
