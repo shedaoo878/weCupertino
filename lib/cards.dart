@@ -2,10 +2,18 @@
 //import 'package:cupertino_pride/events.dart';
 //import 'package:cupertino_pride/polls.dart';
 //import 'package:cupertino_pride/vote.dart';
+import 'package:cupertino_pride/GoogleSignIn.dart';
 import 'package:cupertino_pride/SafeRoutes.dart';
 import 'package:cupertino_pride/Voting.dart';
 import 'package:cupertino_pride/events.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase/firebase.dart';
+import 'package:firebase/firestore.dart';
+
+
+
+void setState(Null Function() param0) {}
 
 // ignore: camel_case_types
 class cards extends StatelessWidget {
@@ -18,7 +26,6 @@ class cards extends StatelessWidget {
         "Events": (BuildContext context) => new Events(),
         "Voting": (BuildContext context) => new Voting(),
         "Safety": (BuildContext context) => new Safety(),
-
       },
     );
     // TODO: implement build
@@ -35,12 +42,72 @@ class HomeScreen extends StatefulWidget {
 }
 
 class homescreen extends State<StatefulWidget> {
+
+  WelcomeUserWidget userinfo = new WelcomeUserWidget(FirebaseUser user, signIn)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF083663) ,
-      body:
-      Container(
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Your Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.event),
+              title: Text('Events'),
+              onTap: () => {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Events()))
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.directions_bike),
+              title: Text('Safe Routes'),
+              onTap: () => {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Safety()))
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.account_balance),
+              title: Text('Voting'),
+              onTap: () => {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Voting()))
+              },
+            ),
+//            ListTile(
+//              leading: Icon(Icons.remove_red_eye),
+//              title: Text('Stored Equations'),
+//              onTap: () => {
+//                Navigator.push(context,
+//                    MaterialPageRoute(builder: (context) => ()))
+//              },
+//            ),
+//            ListTile(
+//              leading: Icon(Icons.edit),
+//              title: Text('Log an Equations'),
+//              onTap: () => {
+//                Navigator.push(context,
+//                    MaterialPageRoute(builder: (context) => LogAnEquation()))
+//              },
+//            ),
+          ],
+        ),
+      ),
+      backgroundColor: Color(0xFF083663),
+      body: Container(
         child: Column(
           children: <Widget>[
             Stack(
@@ -54,22 +121,22 @@ class homescreen extends State<StatefulWidget> {
                           colors: [lightGreen, lightBlueIsh],
                           end: const FractionalOffset(0.2, 0.2),
                           stops: [0.0, 1.0],
-                          tileMode: TileMode.clamp
-                      ),
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(0), bottomRight:  Radius.circular(0))
-                  ),
+                          tileMode: TileMode.clamp),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(0),
+                          bottomRight: Radius.circular(0))),
                   child: Container(
                     padding: EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Welcome!',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                height: 1,
-                                fontSize: 30,
-                                color: Colors.white),
-
+                        Text(
+                          'Welcome',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              height: 1,
+                              fontSize: 30,
+                              color: Colors.white),
                         )
                       ],
                     ),
@@ -88,12 +155,10 @@ class homescreen extends State<StatefulWidget> {
                           child: Text(
                             "Explore Your Community",
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              height: 1,
-                              color: Colors.white,
-                              fontSize: 20
-                            ),
-
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                                color: Colors.white,
+                                fontSize: 20),
                           ),
                         ),
                       ),
@@ -113,15 +178,27 @@ class homescreen extends State<StatefulWidget> {
       ),
     );
   }
-  List<String> Categories = ["Safety", "Events", "Voting", "Polls", "News", "Resources"];
+
+  List<String> Categories = [
+    "Safety",
+    "Events",
+    "Voting",
+    "Polls",
+    "News",
+    "Resources"
+  ];
 
   Map jobIcon = {
-    "Safety" : Icon(Icons.directions_bike, color: Color(0xFF083663), size: 50,),
-    "Events" : Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
-    "Voting" : Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
-    "Polls" : Icon(Icons.poll, color: Color(0xFF083663), size: 50),
-    "News" : Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
-    "Resources" : Icon(Icons.info, color: Color(0xFF083663), size: 50),
+    "Safety": Icon(
+      Icons.directions_bike,
+      color: Color(0xFF083663),
+      size: 50,
+    ),
+    "Events": Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
+    "Voting": Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
+    "Polls": Icon(Icons.poll, color: Color(0xFF083663), size: 50),
+    "News": Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
+    "Resources": Icon(Icons.info, color: Color(0xFF083663), size: 50),
   };
 
   Widget getCategoryContainer(String categoryName) {
@@ -135,7 +212,7 @@ class homescreen extends State<StatefulWidget> {
         borderRadius: BorderRadius.all(Radius.circular(15)),
         boxShadow: [
           new BoxShadow(
-            color: Colors.grey,
+            color: Colors.blueGrey[900],
             blurRadius: 10.0,
           ),
         ],
@@ -150,14 +227,10 @@ class homescreen extends State<StatefulWidget> {
             child: new FloatingActionButton(
               heroTag: categoryName,
               backgroundColor: Colors.white,
-              child:  jobIcon[categoryName],
+              child: jobIcon[categoryName],
               elevation: 10,
               onPressed: () {
-                
                 Navigator.of(context).pushNamed(categoryName);
-
-
-
               },
             ),
           )
@@ -173,7 +246,7 @@ class homescreen extends State<StatefulWidget> {
     for (String category in Categories) {
       if (i < 2) {
         rows.add(getCategoryContainer(category));
-        i ++;
+        i++;
       } else {
         i = 0;
         jobCategoriesCards.add(new Row(
@@ -193,8 +266,4 @@ class homescreen extends State<StatefulWidget> {
     }
     return jobCategoriesCards;
   }
-
-
-
-
 }
