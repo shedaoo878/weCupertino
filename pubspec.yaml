@@ -32,6 +32,7 @@ dependencies:
   firebase_auth: ^0.16.0
   google_sign_in: ^4.4.4
   google_maps_flutter: ^0.5.27+3
+  location: ^2.3.5
   google_map_polyline:
   permission: ^0.1.7
   url_launcher: ^5.0.2

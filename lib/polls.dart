@@ -1,4 +1,5 @@
 import 'package:cupertino_pride/SafeRoutes.dart';
+import 'package:cupertino_pride/events.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -34,8 +35,8 @@ class homescreen extends State<StatefulWidget> {
               new Padding(padding: new EdgeInsets.all(10.0)),
               new RaisedButton.icon(
                 onPressed: () => {
-//                  Navigator.push(context,
-//                      MaterialPageRoute(builder: (context) => SafeRoutes()))
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Events()))
                 },
                 label: Text(
                   'Event',
