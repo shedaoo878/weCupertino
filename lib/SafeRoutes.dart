@@ -1,85 +1,113 @@
 import 'package:flutter/material.dart';
-import 'package:google_map_polyline/google_map_polyline.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:permission/permission.dart';
 
-
-class Safety extends StatelessWidget {
-  // This widget is the root of your application.
+class Safety extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-    );
-  }
+  PolylineState createState() => PolylineState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+class PolylineState extends State<Safety> {
+  final Set<Marker> _markers = {};
+  final Set<Polyline> _polyline = {};
 
-class _MyHomePageState extends State<MyHomePage> {
-  final Set<Polyline> polyline = {};
+  GoogleMapController controller;
 
-  GoogleMapController _controller;
-  List<LatLng> routeCoords;
-  GoogleMapPolyline googleMapPolyline =
-  new GoogleMapPolyline(apiKey: "yourkeyhere");
+  List<LatLng> latlngSegment1 = List();
+  List<LatLng> latlngSegment2 = List();
+  List<LatLng> latlngSegment3 = List();
+  List<LatLng> latlngSegment4 = List();
+  List<LatLng> latlngSegment5 = List();
+  List<LatLng> latlngSegment6 = List();
+  List<List<LatLng>> doubleArray = List();
 
-  getsomePoints() async {
-    var permissions =
-    await Permission.getPermissionsStatus([PermissionName.Location]);
-    if (permissions[0].permissionStatus == PermissionStatus.notAgain) {
-      var askpermissions =
-      await Permission.requestPermissions([PermissionName.Location]);
-    } else {
-      routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
-          origin: LatLng(40.6782, -73.9442),
-          destination: LatLng(40.6944, -73.9212),
-          mode: RouteMode.driving);
-    }
-  }
-
-  getaddressPoints() async {
-    routeCoords = await googleMapPolyline.getPolylineCoordinatesWithAddress(
-        origin: '55 Kingston Ave, Brooklyn, NY 11213, USA',
-        destination: '178 Broadway, Brooklyn, NY 11211, USA',
-        mode: RouteMode.driving);
-  }
+  static LatLng _lat1 = LatLng(37.322925, -122.049219);
+  static LatLng _lat2 = LatLng(37.322998, -122.005994);
+  static LatLng _lat3 = LatLng(12.970387, 77.693621);
+  static LatLng _lat4 = LatLng(12.858433, 77.575691);
+  static LatLng _lat5 = LatLng(12.948029, 77.472936);
+  static LatLng _lat6 = LatLng(13.069280, 77.455844);
+  static LatLng _lat7 = LatLng(12.970387, 77.693621);
+  static LatLng _lat8 = LatLng(12.858433, 77.575691);
+  static LatLng _lat9 = LatLng(12.948029, 77.472936);
+  static LatLng _lat10 = LatLng(13.069280, 77.455844);
+  static LatLng _lat11 = LatLng(12.948029, 77.472936);
+  static LatLng _lat12 = LatLng(13.069280, 77.455844);
+  LatLng _lastMapPosition = LatLng(37.3230, -122.0322);
 
   @override
   void initState() {
-    // TODO: implement initState
+    doubleArray.add(latlngSegment1);
+    doubleArray.add(latlngSegment2);
+    doubleArray.add(latlngSegment3);
+    doubleArray.add(latlngSegment4);
+    doubleArray.add(latlngSegment5);
+    doubleArray.add(latlngSegment6);
+
     super.initState();
-    getaddressPoints();
+    //line segment 1
+    latlngSegment1.add(_lat1);
+    latlngSegment1.add(_lat2);
+
+    latlngSegment2.add(_lat3);
+    latlngSegment2.add(_lat4);
+
+    latlngSegment3.add(_lat5);
+    latlngSegment3.add(_lat6);
+
+    latlngSegment4.add(_lat7);
+    latlngSegment4.add(_lat8);
+
+    latlngSegment5.add(_lat9);
+    latlngSegment5.add(_lat10);
+
+    latlngSegment5.add(_lat11);
+    latlngSegment5.add(_lat12);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GoogleMap(
-          onMapCreated: onMapCreated,
-          polylines: polyline,
-          initialCameraPosition:
-          CameraPosition(target: LatLng(40.6782, -73.9442), zoom: 14.0),
-          mapType: MapType.normal,
-        ));
+      body: GoogleMap(
+        //that needs a list<Polyline>
+        polylines: _polyline,
+        markers: _markers,
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _lastMapPosition,
+          zoom: 11.0,
+        ),
+        mapType: MapType.normal,
+      ),
+    );
   }
 
-  void onMapCreated(GoogleMapController controller) {
+  void _onMapCreated(GoogleMapController controllerParam) {
     setState(() {
-      _controller = controller;
+      controller = controllerParam;
+//      _markers.add(Marker(
+//        // This marker id can be anything that uniquely identifies each marker.
+//        markerId: MarkerId(_lastMapPosition.toString()),
+//        //_lastMapPosition is any coordinate which should be your default
+//        //position when map opens up
+//        position: _lastMapPosition,
+//        infoWindow: InfoWindow(
+//          title: 'Awesome Polyline tutorial',
+//          snippet: 'This is a snippet',
+//        ),
+//      ));
 
-      polyline.add(Polyline(
-          polylineId: PolylineId('route1'),
-          visible: true,
-          points: routeCoords,
-          width: 4,
-          color: Colors.blue,
-          startCap: Cap.roundCap,
-          endCap: Cap.buttCap));
+
+      _polyline.add(Polyline(
+        polylineId: PolylineId('line1'),
+        visible: true,
+        //latlng is List<LatLng>
+        points: latlngSegment1,
+        width: 4,
+        color: Colors.blue,
+      ));
+
+      //different sections of polyline can have different colors
+
     });
   }
 }

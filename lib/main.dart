@@ -1,5 +1,6 @@
 
 import 'package:cupertino_pride/GoogleSignIn.dart';
+import 'package:cupertino_pride/SafeRoutes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
