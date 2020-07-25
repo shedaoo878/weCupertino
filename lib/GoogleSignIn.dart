@@ -1,4 +1,5 @@
 
+import 'package:cupertino_pride/Resources.dart';
 import 'package:cupertino_pride/events.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -191,6 +192,7 @@ class cards extends StatelessWidget {
         "Events": (BuildContext context) => new Events(),
         "Voting": (BuildContext context) => new Voting(),
         "Safety": (BuildContext context) => new Safety(),
+        "Resources": (BuildContext context) => new Resources(),
       },
     );
 
