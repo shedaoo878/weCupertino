@@ -23,8 +23,10 @@ class votingState extends State<votingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF083663),
       appBar: AppBar(
-        title: Text('Voting'),
+        backgroundColor: Color(0xFF07489C),
+        title: Text('Voting Information'),
         centerTitle: true,
       ),
       body: Container(
@@ -33,10 +35,10 @@ class votingState extends State<votingScreen> {
             children: <Widget>[
               CupertinoButton(
                 child: Text(
-                  "Why Should You Vote?",
+                  "Why Vote?",
                   style: new TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
+                      color: Colors.white,
+                      fontSize: 40,
                       fontWeight: FontWeight.bold),
                 ),
                 onPressed: () => {
@@ -45,7 +47,14 @@ class votingState extends State<votingScreen> {
                 },
               ),
               new CupertinoButton(
-                  child: Text('Sample Ballot'),
+
+                  child: Text('Sample Ballot',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
                   onPressed: () => {_launchURL()}),
             ],
           ),
