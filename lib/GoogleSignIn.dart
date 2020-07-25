@@ -1,4 +1,4 @@
-import 'package:cupertino_pride/cards.dart';
+
 import 'package:cupertino_pride/events.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -364,7 +364,7 @@ class homescreen extends State<StatefulWidget> {
     );
   }
 
-  //this is an edit
+
   List<String> Categories = [
     "Safety",
     "Events",
