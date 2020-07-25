@@ -226,7 +226,7 @@ class homescreen extends State<StatefulWidget> {
 
 
 
-  
+
   @override
   Widget build(BuildContext context) {
 //    FirebaseUser user = _auth.currentUser() as FirebaseUser;
@@ -316,7 +316,7 @@ class homescreen extends State<StatefulWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Welcome ' + user1.displayName,
+                          user1 == null? 'Welcome' : 'Welcome ' + user1.displayName,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               height: 1,
