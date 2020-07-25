@@ -34,8 +34,8 @@ class homescreen extends State<StatefulWidget> {
               new Padding(padding: new EdgeInsets.all(10.0)),
               new RaisedButton.icon(
                 onPressed: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SafeRoutes()))
+//                  Navigator.push(context,
+//                      MaterialPageRoute(builder: (context) => SafeRoutes()))
                 },
                 label: Text(
                   'Event',

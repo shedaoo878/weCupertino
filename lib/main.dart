@@ -4,7 +4,7 @@ import 'package:cupertino_pride/cards.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(cards());
+  runApp(GoogleSignInw());
 }
 
 class MyApp extends StatelessWidget {
