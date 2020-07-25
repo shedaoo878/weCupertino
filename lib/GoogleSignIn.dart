@@ -4,14 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import 'SafeRoutes.dart';
 import 'Voting.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
-WelcomeUserWidget userinfo;
 FirebaseUser user1;
 
 Future<String> signInWithGoogle() async {
@@ -157,19 +155,6 @@ class googleSignInPage extends State<StatefulWidget> {
   }
 }
 
-class WelcomeUserWidget extends StatelessWidget {
-  GoogleSignIn _googleSignIn;
-  FirebaseUser _user;
-
-  WelcomeUserWidget(FirebaseUser user, GoogleSignIn signIn) {
-    _user = user;
-    _googleSignIn = signIn;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-  }
-}
 
 
 
@@ -208,8 +193,7 @@ class cards extends StatelessWidget {
         "Safety": (BuildContext context) => new Safety(),
       },
     );
-    // TODO: implement build
-    throw UnimplementedError();
+
   }
 }
 
