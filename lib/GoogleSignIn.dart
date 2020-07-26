@@ -197,7 +197,6 @@ class cards extends StatelessWidget {
         "Voting": (BuildContext context) => new Voting(),
         "Safety": (BuildContext context) => new Safety(),
         "Resources": (BuildContext context) => new Resources(),
-        "Polls" : (BuildContext context) => new polls()
       },
     );
 
@@ -328,14 +327,27 @@ class homescreen extends State<StatefulWidget> {
                   ),
                 ),
                 Container(
-                  height: 500,
+                  height: 600,
                   margin: EdgeInsets.only(top: 200),
                   padding: EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Padding(padding: EdgeInsets.all(0)),
                       Container(
-                        margin: EdgeInsets.only(top: 40),
+                        child: Text(
+                            'Your Points: 30',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white
+                          ),
+
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
                         child: Center(
                           child: Text(
                             "Explore Your Community",
@@ -348,7 +360,7 @@ class homescreen extends State<StatefulWidget> {
                         ),
                       ),
                       Container(
-                        height: 400,
+                        height: 450,
                         child: ListView(
                           children: getJobCategories(),
                         ),
@@ -369,7 +381,7 @@ class homescreen extends State<StatefulWidget> {
     "Safety",
     "Events",
     "Voting",
-    "Polls",
+
     "Resources"
   ];
 
@@ -381,7 +393,6 @@ class homescreen extends State<StatefulWidget> {
     ),
     "Events": Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
     "Voting": Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
-    "Polls": Icon(Icons.poll, color: Color(0xFF083663), size: 50),
     "Resources": Icon(Icons.info, color: Color(0xFF083663), size: 50),
   };
 
