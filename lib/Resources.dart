@@ -56,7 +56,7 @@ class homescreen extends State<StatefulWidget> {
         backgroundColor: Color(0xFF07489C),
         title: Text('Resources'),
         centerTitle: true,
-        leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => cards())); }, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) =>  cards())); }, icon: Icon(Icons.arrow_back)),
 
       ),
       backgroundColor: Color(0xFF083663),
@@ -85,7 +85,7 @@ class homescreen extends State<StatefulWidget> {
                       children: <Widget>[
                         Text(
 //                          user1 == null? 'Welcome' : 'Welcome ' + user1.displayName,
-                          'Resources',
+                          'Resources Available for you',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               height: 1,

@@ -108,9 +108,9 @@ class votingState extends State<votingScreen> {
                           Text('VP', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center, ),
                           Text('Mike R Pence', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                           Text('--'),
-                          Text('VP Candidate', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
-                          Text('Other Candidate', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
-                          Text('Hawkins Howie', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,)
+                          Text('Ajamu Baraka', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Gary Johnson', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                          Text('Dennis J Banks', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,)
                         ]
                     ),
 

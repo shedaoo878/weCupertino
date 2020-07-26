@@ -335,16 +335,22 @@ class homescreen extends State<StatefulWidget> {
                     children: <Widget>[
                       Padding(padding: EdgeInsets.all(0)),
                       Container(
-                        child: Text(
-                            'Your Points: 30',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
 
-                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              'Your Points: 90',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white
+                              ),
+
+                            ),
+
+                          ],
+                        )
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 20),
