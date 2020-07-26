@@ -225,6 +225,7 @@ class homescreen extends State<StatefulWidget> {
 
 
 
+  int x= 30;
 
   @override
   Widget build(BuildContext context) {
@@ -315,7 +316,7 @@ class homescreen extends State<StatefulWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Welcome Bob Lee',
+                          user1 == null? 'Welcome' : 'Welcome ' + user1.displayName,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               height: 1,
@@ -336,10 +337,11 @@ class homescreen extends State<StatefulWidget> {
                       Padding(padding: EdgeInsets.all(0)),
                       Container(
 
+
                         child: Row(
                           children: <Widget>[
                             Text(
-                              'Your Points: 90',
+                              'Your Points: ' + x.toString(),
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 30,
