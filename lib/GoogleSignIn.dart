@@ -315,7 +315,7 @@ class homescreen extends State<StatefulWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          user1 == null? 'Welcome' : 'Welcome ' + user1.displayName,
+                          'Welcome Bob Lee',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               height: 1,

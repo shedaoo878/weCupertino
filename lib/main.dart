@@ -7,7 +7,7 @@ import 'package:cupertino_pride/polls.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(GoogleSignInw());
+  runApp(cards());
 }
 
 class MyApp extends StatelessWidget {
