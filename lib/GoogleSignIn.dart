@@ -1,6 +1,7 @@
 
 import 'package:cupertino_pride/Resources.dart';
 import 'package:cupertino_pride/events.dart';
+import 'package:cupertino_pride/polls.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -143,9 +144,12 @@ class googleSignInPage extends State<StatefulWidget> {
                       child: Wrap(
                         children: <Widget>[
                           Text(
-                              'This is an app description, It will contain all the information about the app that is '
-                              'neccessary I am typing all of this extra info to make sure that the text wraps properly'
-                              'I do not know how much more I need',
+                              'This is an app that helps you get more involved with your community, It allows you to '
+                              'be updated with your community at all times and invovle yourself with all the events'
+                              'in your community.'
+                              ''
+                              ' It awards points for the number of events you participate in and as you earn more points'
+                                  'you can hopefully use them to get swag from your community',
                               style: TextStyle(
                                   height: 1, color: Colors.white, fontSize: 20))
                         ],
@@ -173,7 +177,7 @@ class googleSignInPage extends State<StatefulWidget> {
 
 
 
-
+int x = 0;
 
 
 
@@ -193,10 +197,20 @@ class cards extends StatelessWidget {
         "Voting": (BuildContext context) => new Voting(),
         "Safety": (BuildContext context) => new Safety(),
         "Resources": (BuildContext context) => new Resources(),
+        "Polls" : (BuildContext context) => new polls()
       },
     );
 
   }
+
+  void setX(int val){
+    x = val;
+  }
+
+  int getX(){
+    return x;
+  }
+
 }
 
 Color lightBlueIsh = Color(0xFF07489C);
@@ -356,7 +370,6 @@ class homescreen extends State<StatefulWidget> {
     "Events",
     "Voting",
     "Polls",
-    "News",
     "Resources"
   ];
 
@@ -369,7 +382,6 @@ class homescreen extends State<StatefulWidget> {
     "Events": Icon(Icons.calendar_today, color: Color(0xFF083663), size: 50),
     "Voting": Icon(Icons.account_balance, color: Color(0xFF083663), size: 50),
     "Polls": Icon(Icons.poll, color: Color(0xFF083663), size: 50),
-    "News": Icon(Icons.schedule, color: Color(0xFF083663), size: 50),
     "Resources": Icon(Icons.info, color: Color(0xFF083663), size: 50),
   };
 

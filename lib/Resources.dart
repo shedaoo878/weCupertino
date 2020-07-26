@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'GoogleSignIn.dart';
+
 
 class Resources extends StatelessWidget {
   @override
@@ -50,6 +52,13 @@ class homescreen extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF07489C),
+        title: Text('Resources'),
+        centerTitle: true,
+        leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => cards())); }, icon: Icon(Icons.arrow_back)),
+
+      ),
       backgroundColor: Color(0xFF083663),
       body: Container(
         child: Column(

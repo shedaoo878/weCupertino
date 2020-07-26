@@ -1,3 +1,4 @@
+import 'package:cupertino_pride/GoogleSignIn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,6 +27,8 @@ class votingState extends State<votingScreen> {
         backgroundColor: Color(0xFF07489C),
         title: Text('Voting Information'),
         centerTitle: true,
+        leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => cards())); }, icon: Icon(Icons.arrow_back)),
+
       ),
       body: Container(
         child: Center(

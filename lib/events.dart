@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'GoogleSignIn.dart';
+
 class Events extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,6 +12,24 @@ class Events extends StatelessWidget {
     // TODO: implement build
   }
 }
+
+List<String> events = [
+  "Shakespeare In the Park",
+  "Bell Ringing Ceremony",
+  "Planning Commision ",
+
+  "Housing Comission ",
+  "Teen Commission "
+];
+
+List<String> dates = [
+  "8/1/2020",
+  "8/5/2020",
+  "8/11/2020",
+  "8/13/2020",
+  "8/14/2020"
+
+];
 
 Color lightBlueIsh = Color(0xFF07489C);
 Color lightGreen = Color(0xFF33BBB5);
@@ -25,6 +45,13 @@ class homescreen extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFF07489C),
+          title: Text('Upcoming Events'),
+          centerTitle: true,
+          leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => cards())); }, icon: Icon(Icons.arrow_back)),
+
+        ),
         backgroundColor: Color(0xFF083663),
         body: SafeArea(
           child: new Container(
@@ -59,6 +86,7 @@ class homescreen extends State<StatefulWidget> {
                                 SizedBox(
                                   width: 16,
                                 ),
+
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -66,13 +94,14 @@ class homescreen extends State<StatefulWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       Text(
-                                        'Event at Wilson Park',
+                                        events[index],
                                         style: Theme.of(context)
                                             .textTheme
-                                            .headline5
+                                            .headline6
                                             .copyWith(color: Colors.white),
                                       ),
-                                      Text('7/4 at 3:00PM',
+
+                                      Text(dates[index],
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline6
@@ -80,11 +109,12 @@ class homescreen extends State<StatefulWidget> {
                                     ],
                                   ),
                                 ),
-                                Icon(
-                                  Icons.navigate_next,
-                                  size: 36,
-                                  color: Colors.white,
-                                )
+
+                                IconButton(
+                                    icon: Icon(Icons.navigate_next,
+                                      size: 36,
+                                      color: Colors.white,),
+                                    onPressed:() => {})
                               ],
                             ),
                           ),
